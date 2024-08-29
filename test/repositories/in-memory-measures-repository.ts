@@ -42,4 +42,25 @@ export class InMemoryMeasureRepository implements MeasuresRepository {
 
     this.items[index] = measure
   }
+
+  async findByCostumerId(
+    costumerId: string,
+    queryMeasureType?: 'WATER' | 'GAS',
+  ): Promise<Measure[] | null> {
+    let measures = this.items.filter(
+      (measure) => measure.customerId.toString() === costumerId,
+    )
+
+    if (queryMeasureType) {
+      measures = measures.filter(
+        (measure) => measure.measureType?.toString() === queryMeasureType,
+      )
+    }
+
+    if (measures.length === 0) {
+      return null
+    }
+
+    return measures
+  }
 }
