@@ -9,7 +9,7 @@ import { AlreadyExistMeasureInMonthThisYear } from './error/already-exist-measur
 
 interface ReadMeasureRequest {
   image: string
-  customer_code: string
+  customerCode: string
   measuredAt: Date
   measureType: MeasureType
 }
@@ -26,13 +26,13 @@ export class ReadMeasureUseCase {
 
   async execute({
     image,
-    customer_code,
+    customerCode,
     measuredAt,
     measureType,
   }: ReadMeasureRequest): Promise<ReadMeasureResponse> {
     const alreadyMeasureWithMountAndYear =
-      await this.measuresRepository.getMeasuresByCustomerIdAndMeasuresAt(
-        customer_code,
+      await this.measuresRepository.getMeasuresByCustomerIdAndMeasuresAtWithMonthThisYear(
+        customerCode,
         measuredAt,
       )
 
@@ -51,11 +51,11 @@ export class ReadMeasureUseCase {
       )
 
     const measure = Measure.create({
-      customerId: new UniqueEntityId(customer_code),
+      customerId: new UniqueEntityId(customerCode),
       measuredAt,
-      measureType,
       measureValue,
       imageUrl: imageTemporaryLink,
+      measureType,
     })
 
     await this.measuresRepository.create(measure)

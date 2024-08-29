@@ -1,7 +1,7 @@
 import type { MeasuresRepository } from '@/domain/measure/application/repositories/measure-repository'
 import type { Measure } from '@/domain/measure/enterprise/measure'
 
-export class inMemoryMeasureRepository implements MeasuresRepository {
+export class InMemoryMeasureRepository implements MeasuresRepository {
   public items: Measure[] = []
 
   async getMeasuresByCustomerIdAndMeasuresAtWithMonthThisYear(

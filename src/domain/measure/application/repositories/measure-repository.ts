@@ -1,10 +1,10 @@
 import type { Measure } from '../../enterprise/measure'
 
 export interface MeasuresRepository {
-  getMeasuresByCustomerIdAndMeasuresAt(
+  getMeasuresByCustomerIdAndMeasuresAtWithMonthThisYear(
     customerId: string,
     measureAt: Date,
-  ): Promise<Measure>
+  ): Promise<Measure | null>
 
   create(measure: Measure): Promise<void>
 }

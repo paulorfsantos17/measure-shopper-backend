@@ -1,8 +1,9 @@
 import { Entity } from '../../../core/entities/entity'
-import type { UniqueEntityId } from '../../../core/entities/unique-entity-id'
-import type { Optional } from '../../../core/types/optional'
-import type { MeasureType } from './value-objects/measure-type'
-interface MeasureProps {
+import { UniqueEntityId } from '../../../core/entities/unique-entity-id'
+import { Optional } from '../../../core/types/optional'
+import { MeasureType } from './value-objects/measure-type'
+
+export interface MeasureProps {
   customerId: UniqueEntityId
   measuredAt: Date
   measureType: MeasureType
@@ -20,12 +21,20 @@ export class Measure extends Entity<MeasureProps> {
     return this.props.measuredAt
   }
 
-  get measureType(): MeasureType {
+  get measureType(): MeasureType | null {
     return this.props.measureType
+  }
+
+  set measureType(value: MeasureType) {
+    this.props.measureType = value
   }
 
   get measureValue(): number {
     return this.props.measureValue
+  }
+
+  set measureValue(value: number) {
+    this.props.measureValue = value
   }
 
   get measureConfirmed(): boolean {
