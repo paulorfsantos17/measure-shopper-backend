@@ -1,3 +1,3 @@
 export interface LLMService {
-  getValueMeasure(imageBase64: string): number
+  getValueMeasure(imageBase64: string): Promise<number>
 }
