@@ -1,10 +1,11 @@
 import { Entity } from '../../../core/entities/entity'
 import type { UniqueEntityId } from '../../../core/entities/unique-entity-id'
 import type { Optional } from '../../../core/types/optional'
+import type { MeasureType } from './value-objects/measure-type'
 interface MeasureProps {
   customerId: UniqueEntityId
   measuredAt: Date
-  measureType: 'WATER' | 'GAS'
+  measureType: MeasureType
   measureValue: number
   measureConfirmed: boolean
   imageUrl: string
@@ -19,7 +20,7 @@ export class Measure extends Entity<MeasureProps> {
     return this.props.measuredAt
   }
 
-  get measureType(): 'WATER' | 'GAS' {
+  get measureType(): MeasureType {
     return this.props.measureType
   }
 
