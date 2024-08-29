@@ -93,7 +93,7 @@ describe('Read Measure Use Case', () => {
         measuredAt,
         measureType,
       }),
-    ).rejects.toThrowError(new AlreadyExistMeasureInMonthThisYear())
+    ).rejects.toThrow(AlreadyExistMeasureInMonthThisYear)
   })
 
   it('should be able to read measurements and create measure when exist one measure in month this year different', async () => {
