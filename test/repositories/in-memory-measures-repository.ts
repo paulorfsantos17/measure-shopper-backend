@@ -25,4 +25,21 @@ export class InMemoryMeasureRepository implements MeasuresRepository {
   async create(measure: Measure): Promise<void> {
     this.items.push(measure)
   }
+
+  async findById(id: string): Promise<Measure | null> {
+    const measure = this.items.find((item) => item.id.toString() === id)
+    if (!measure) {
+      return null
+    }
+
+    return measure
+  }
+
+  async save(measure: Measure): Promise<void> {
+    const index = this.items.findIndex((measure) =>
+      measure.id.equals(measure.id),
+    )
+
+    this.items[index] = measure
+  }
 }

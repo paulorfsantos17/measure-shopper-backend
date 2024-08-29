@@ -7,4 +7,6 @@ export interface MeasuresRepository {
   ): Promise<Measure | null>
 
   create(measure: Measure): Promise<void>
+  findById(id: string): Promise<Measure | null>
+  save(measure: Measure): Promise<void>
 }

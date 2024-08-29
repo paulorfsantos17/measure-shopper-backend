@@ -45,6 +45,11 @@ export class Measure extends Entity<MeasureProps> {
     return this.props.imageUrl
   }
 
+  confirmValue(measureValue: number) {
+    this.props.measureConfirmed = true
+    this.props.measureValue = measureValue
+  }
+
   static create(
     props: Optional<MeasureProps, 'measureConfirmed'>,
     id?: UniqueEntityId,
