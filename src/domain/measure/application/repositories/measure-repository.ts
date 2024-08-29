@@ -5,4 +5,6 @@ export interface MeasuresRepository {
     customerId: string,
     measureAt: Date,
   ): Promise<Measure>
+
+  create(measure: Measure): Promise<void>
 }
