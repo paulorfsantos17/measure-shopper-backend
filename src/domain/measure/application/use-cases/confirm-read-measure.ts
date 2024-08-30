@@ -1,4 +1,4 @@
-import type { MeasuresRepository } from '../repositories/measure-repository'
+import type { MeasuresRepository } from '../repositories/measures-repository'
 import { ConfirmationDuplicate } from './error/confirmation-duplicate'
 import { MeasureNotFound } from './error/measure-not-found'
 
