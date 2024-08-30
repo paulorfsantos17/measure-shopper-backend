@@ -3,7 +3,7 @@ import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { Measure } from '../../enterprise/measure'
 import type { MeasureType } from '../../enterprise/value-objects/measure-type'
 import type { LLMService } from '../model/LLMService'
-import type { MeasuresRepository } from '../repositories/measure-repository'
+import type { MeasuresRepository } from '../repositories/measures-repository'
 import type { ImageStorageService } from '../storage/generate-image'
 import { AlreadyExistMeasureInMonthThisYear } from './error/already-exist-measure-in-mount-this-year'
 

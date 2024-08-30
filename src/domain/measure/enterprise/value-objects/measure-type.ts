@@ -17,6 +17,17 @@ export class MeasureType {
     return this._value
   }
 
+  static setMeasureType(value: string) {
+    if (value === 'WATER') {
+      return new MeasureType('WATER')
+    }
+    if (value === 'GAS') {
+      return new MeasureType('GAS')
+    }
+
+    throw new Error('invalid value')
+  }
+
   public toString(): string {
     return this._value
   }
