@@ -1,5 +1,5 @@
 import { app } from './app'
-import { env } from './env'
+import { env } from './infra/env'
 
 app
   .listen({
@@ -7,5 +7,5 @@ app
     port: env.PORT,
   })
   .then(() => {
-    console.log('Server is running on http://localhost:3333')
+    console.log('Server is running on http://localhost:' + env.PORT)
   })
