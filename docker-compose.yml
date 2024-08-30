@@ -1,0 +1,12 @@
+version: '2.29.1'
+
+services:
+  postgres:
+    container_name: measure
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: measure

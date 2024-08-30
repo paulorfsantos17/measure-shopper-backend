@@ -1,4 +1,4 @@
-import type { MeasuresRepository } from '@/domain/measure/application/repositories/measure-repository'
+import type { MeasuresRepository } from '@/domain/measure/application/repositories/measures-repository'
 import type { Measure } from '@/domain/measure/enterprise/measure'
 
 export class InMemoryMeasureRepository implements MeasuresRepository {
@@ -6,13 +6,13 @@ export class InMemoryMeasureRepository implements MeasuresRepository {
 
   async getMeasuresByCustomerIdAndMeasuresAtWithMonthThisYear(
     customerId: string,
-    measureAt: Date,
+    measuredAt: Date,
   ): Promise<Measure | null> {
     const measure = this.items.find(
       (measure) =>
         measure.customerId.toString() === customerId &&
-        measure.measuredAt.getFullYear() === measureAt.getFullYear() &&
-        measure.measuredAt.getMonth() === measureAt.getMonth(),
+        measure.measuredAt.getFullYear() === measuredAt.getFullYear() &&
+        measure.measuredAt.getMonth() === measuredAt.getMonth(),
     )
 
     if (!measure) {
@@ -44,11 +44,11 @@ export class InMemoryMeasureRepository implements MeasuresRepository {
   }
 
   async findByCostumerId(
-    costumerId: string,
+    customerId: string,
     queryMeasureType?: 'WATER' | 'GAS',
   ): Promise<Measure[] | null> {
     let measures = this.items.filter(
-      (measure) => measure.customerId.toString() === costumerId,
+      (measure) => measure.customerId.toString() === customerId,
     )
 
     if (queryMeasureType) {
