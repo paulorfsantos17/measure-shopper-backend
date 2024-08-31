@@ -5,9 +5,10 @@ import { prisma } from '@/infra/database/prisma'
 import { PrismaMeasureMapper } from './mappers/prisma-measure-mapper'
 
 export class PrismaMeasuresRepository implements MeasuresRepository {
-  async getMeasuresByCustomerIdAndMeasuresAtWithMonthThisYear(
+  async getMeasuresByCustomerIdAndMeasuresAtWithMonthThisYearAndTypeMeasure(
     customerId: string,
     measuredAt: Date,
+    measureType: string,
   ): Promise<Measure | null> {
     const startOfMonth = new Date(
       measuredAt.getFullYear(),
@@ -23,6 +24,7 @@ export class PrismaMeasuresRepository implements MeasuresRepository {
     const measure = await prisma.measure.findFirst({
       where: {
         customerId,
+        measureType,
         measuredAt: {
           gte: startOfMonth,
           lte: endOfMonth,
@@ -70,7 +72,7 @@ export class PrismaMeasuresRepository implements MeasuresRepository {
 
   async findByCostumerId(
     customerId: string,
-    queryMeasureType?: 'WATER' | 'GAS',
+    queryMeasureType?: string,
   ): Promise<Measure[] | null> {
     const measures = await prisma.measure.findMany({
       where: {

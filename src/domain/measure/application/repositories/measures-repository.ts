@@ -1,10 +1,10 @@
 import type { Measure } from '../../enterprise/measure'
-type MeasureType = 'WATER' | 'GAS'
 
 export interface MeasuresRepository {
-  getMeasuresByCustomerIdAndMeasuresAtWithMonthThisYear(
+  getMeasuresByCustomerIdAndMeasuresAtWithMonthThisYearAndTypeMeasure(
     customerId: string,
     measuredAt: Date,
+    typeMeasure: string,
   ): Promise<Measure | null>
 
   create(measure: Measure): Promise<void>
@@ -12,6 +12,6 @@ export interface MeasuresRepository {
   save(measure: Measure): Promise<void>
   findByCostumerId(
     customerId: string,
-    queryMeasureType?: MeasureType,
+    queryMeasureType?: string,
   ): Promise<Measure[] | null>
 }

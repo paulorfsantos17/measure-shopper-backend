@@ -1,4 +1,4 @@
-import type { Measure } from '@/domain/measure/enterprise/measure'
+import { Measure } from '@/domain/measure/enterprise/measure'
 
 export class ReadMeasurePresenter {
   static toHTTP(measure: Measure) {

@@ -31,9 +31,10 @@ export class ReadMeasureUseCase {
     measureType,
   }: ReadMeasureRequest): Promise<ReadMeasureResponse> {
     const alreadyMeasureWithMountAndYear =
-      await this.measuresRepository.getMeasuresByCustomerIdAndMeasuresAtWithMonthThisYear(
+      await this.measuresRepository.getMeasuresByCustomerIdAndMeasuresAtWithMonthThisYearAndTypeMeasure(
         customerCode,
         measuredAt,
+        measureType.toString(),
       )
 
     if (alreadyMeasureWithMountAndYear) {

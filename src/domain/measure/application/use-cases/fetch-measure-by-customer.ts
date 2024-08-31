@@ -1,10 +1,10 @@
 import { Measure } from '../../enterprise/measure'
-import { MeasuresRepository } from '../repositories/measure-repository'
+import { MeasuresRepository } from '../repositories/measures-repository'
 import { MeasureNotFound } from './error/measure-not-found'
 
 interface FetchMeasureByCostumerRequest {
   customerId: string
-  measureType?: 'WATER' | 'GAS'
+  measureType?: string
 }
 interface FetchMeasureByCostumerResponse {
   measures: Measure[]
