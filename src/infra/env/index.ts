@@ -3,6 +3,9 @@ import 'dotenv/config'
 import { z } from 'zod'
 
 const envSchema = z.object({
+  DATABASE_URL: z
+    .string()
+    .default('postgresql://docker:docker@localhost:5432/measure?schema=public'),
   PORT: z.coerce.number().default(3333),
   GEMINI_API_KEY: z.string().min(1, 'A chave do API do Gemini é obrigatória.'),
 })
