@@ -5,8 +5,6 @@ import { ZodError } from 'zod'
 
 import { measureRoutes } from './infra/http/controllers/measure/routes'
 
-console.log(path.join(__dirname, 'images'))
-
 export const app = fastify()
 
 app.register(fastifyStatic, {
